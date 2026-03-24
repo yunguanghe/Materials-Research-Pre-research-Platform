@@ -1,0 +1,6 @@
+ase
+pymatgen
+requests
+mattersim
+mp-api
+Pillow

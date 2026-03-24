@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.DS_Store
+.idea/
+.venv/
+venv/
+env/
+sim_tasks/
+mp_cif_downloads/
+bigmodle/output_json/
+bigmodel_structured_json/
+cif_result.json
+*.log
