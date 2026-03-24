@@ -1,26 +1,26 @@
-# HYG Materials Agent Demo
+# HYG Materials Agent
 
-这是一个面向材料研究与演示场景的智能工作台项目，包含：
+这是一个面向材料研究场景的智能工作台项目，包含：
 
 - 本地合金材料 JSON 检索
 - CIF 文件下载与解析
 - 初始结构与弛豫后结构对比
 - 基于 MatterSim 的结构弛豫与候选快排
-- 面向演示的网页聊天前端
+- 网页聊天前端
 
 ## 主要文件
 
-- [chat.py](/Users/stardust/Documents/New project/HYG/chat.py)
+- `chat.py`
   前端与后端总控入口，负责对话、路由、结果展示
-- [matesim_dft.py](/Users/stardust/Documents/New project/HYG/matesim_dft.py)
+- `matesim_dft.py`
   候选结构弛豫、数值指标提取、候选快排
-- [parse_cif.py](/Users/stardust/Documents/New project/HYG/parse_cif.py)
+- `parse_cif.py`
   单个 CIF 解析与两个 CIF 的横向对比
-- [download_mp_cif.py](/Users/stardust/Documents/New project/HYG/download_mp_cif.py)
+- `download_mp_cif.py`
   从 Materials Project 按体系或化学式下载 CIF
-- [pdf_table_pipeline.py](/Users/stardust/Documents/New project/HYG/pdf_table_pipeline.py)
+- `pdf_table_pipeline.py`
   表格图片转结构化 JSON
-- [bigmodle/extract_alloy_tables_with_gemini.py](/Users/stardust/Documents/New project/HYG/bigmodle/extract_alloy_tables_with_gemini.py)
+- `bigmodle/extract_alloy_tables_with_gemini.py`
   使用大模型抽取合金表格内容
 
 ## 项目能力
@@ -104,7 +104,7 @@ python3 parse_cif.py /path/to/file.cif --text
 
 - 材料研究前期检索与预筛
 - 候选结构快排
-- 演示型智能材料助手
+- 智能材料助手
 
 当前项目不直接等同于：
 
@@ -114,5 +114,4 @@ python3 parse_cif.py /path/to/file.cif --text
 
 ## 文档
 
-- [PROJECT_OVERVIEW.md](/Users/stardust/Documents/New project/HYG/PROJECT_OVERVIEW.md)
-- [DEMO_SCRIPT.md](/Users/stardust/Documents/New project/HYG/DEMO_SCRIPT.md)
+- `PROJECT_OVERVIEW.md`

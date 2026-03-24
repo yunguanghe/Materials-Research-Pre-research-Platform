@@ -19,8 +19,12 @@ except Exception:
     cv2 = None
 
 DEFAULT_REPO_CANDIDATES = [
-    Path("/Users/stardust/Documents/New project/TableStructureRec"),
-    Path(__file__).resolve().parent / "TableStructureRec",
+    candidate
+    for candidate in [
+        Path(os.environ.get("TABLE_STRUCTURE_REC_DIR", "")).expanduser() if os.environ.get("TABLE_STRUCTURE_REC_DIR") else None,
+        Path(__file__).resolve().parent / "TableStructureRec",
+    ]
+    if candidate is not None
 ]
 PROJECT_ROOT = Path(__file__).resolve().parent
 DEFAULT_INPUT_DIR = PROJECT_ROOT / "PNG"
