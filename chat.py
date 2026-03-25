@@ -33,7 +33,6 @@ MATERIALS_PROJECT_API_KEY = os.environ.get("MATERIALS_PROJECT_API_KEY", "")
 HOST = os.environ.get("CHAT_HOST", "127.0.0.1")
 PORT = int(os.environ.get("CHAT_PORT", "8000"))
 MATERIALS_DIR = PROJECT_ROOT / "ilovepdf_structured_json" / "materials"
-LOGO_PATH = PROJECT_ROOT / "PNG" / "20260320130359.jpg"
 SIM_SCRIPT_PATH = PROJECT_ROOT / "matesim_dft.py"
 SIM_TASKS_DIR = PROJECT_ROOT / "sim_tasks"
 SIM_MATERIALS_SUBDIR = "materials"
@@ -103,7 +102,7 @@ HTML_PAGE = """<!DOCTYPE html>
     }
     .hero {
       display: grid;
-      grid-template-columns: 120px 1fr;
+      grid-template-columns: 1fr;
       gap: 20px;
       align-items: center;
       margin-bottom: 22px;
@@ -126,16 +125,6 @@ HTML_PAGE = """<!DOCTYPE html>
       border-radius: 50%;
       background: radial-gradient(circle, rgba(76, 201, 255, 0.18), transparent 68%);
       pointer-events: none;
-    }
-    .hero-logo {
-      width: 120px;
-      height: 84px;
-      object-fit: contain;
-      border-radius: 16px;
-      padding: 8px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(112, 191, 255, 0.2);
-      box-shadow: inset 0 0 40px rgba(87, 205, 255, 0.08);
     }
     .hero h1 {
       margin: 0 0 8px;
@@ -542,7 +531,7 @@ HTML_PAGE = """<!DOCTYPE html>
       text-decoration: none;
     }
     .hero {
-      grid-template-columns: 118px minmax(0, 1fr);
+      grid-template-columns: 1fr;
       gap: 26px;
       padding: 26px 28px;
       border-radius: 30px;
@@ -554,15 +543,6 @@ HTML_PAGE = """<!DOCTYPE html>
         0 0 0 1px rgba(122, 205, 255, 0.08),
         0 32px 80px rgba(4, 14, 30, 0.52),
         inset 0 1px 0 rgba(255,255,255,0.04);
-    }
-    .hero-logo {
-      width: 118px;
-      height: 118px;
-      border-radius: 24px;
-      padding: 14px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)),
-        rgba(5, 17, 33, 0.72);
     }
     .hero-kicker {
       display: inline-flex;
@@ -854,7 +834,6 @@ HTML_PAGE = """<!DOCTYPE html>
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; }
       .dashboard { grid-template-columns: 1fr; }
-      .hero-logo { width: 120px; height: 82px; }
       .msg { width: 100%; }
       .settings-grid { grid-template-columns: 1fr; }
       .hero-stats { grid-template-columns: 1fr; }
@@ -866,7 +845,6 @@ HTML_PAGE = """<!DOCTYPE html>
 <body>
   <div class="wrap">
     <div class="hero">
-      <img class="hero-logo" src="/logo" alt="Logo" />
       <div>
         <div class="hero-kicker">Autonomous Research Mesh</div>
         <h1>Agent 材料研究工作台</h1>
@@ -2859,17 +2837,6 @@ class ChatHandler(BaseHTTPRequestHandler):
         try:
             parsed = urlparse(self.path)
             query = parse_qs(parsed.query)
-            if self.path == "/logo":
-                if not LOGO_PATH.exists():
-                    self.send_error(HTTPStatus.NOT_FOUND, "Logo Not Found")
-                    return
-                body = LOGO_PATH.read_bytes()
-                self.send_response(HTTPStatus.OK)
-                self.send_header("Content-Type", "image/jpeg")
-                self.send_header("Content-Length", str(len(body)))
-                self.end_headers()
-                self.wfile.write(body)
-                return
             if parsed.path == "/task-status":
                 task_id = query.get("id", [""])[0]
                 if not task_id:
