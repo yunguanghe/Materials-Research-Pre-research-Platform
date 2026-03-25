@@ -1,4 +1,4 @@
-# HYG Materials Agent
+# Materials Agent
 
 这是一个面向材料研究场景的智能工作台项目，包含：
 
